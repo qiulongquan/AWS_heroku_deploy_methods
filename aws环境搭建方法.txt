@@ -1,0 +1,32 @@
+aws环境搭建方法(下面的方法已经不需要了，使用AWS的EC2加上Docker容器来部署更方便)
+
+ssh -i ".ssh/mykey1.pem" ec2-user@ec2-13-231-122-33.ap-northeast-1.compute.amazonaws.com
+
+按照下面的页面内容安装eb script程序
+https://github.com/aws/aws-elastic-beanstalk-cli-setup
+
+echo 'export PATH="/home/ec2-user/.ebcli-virtual-env/executables:$PATH"' >> ~/.bash_profile && source ~/.bash_profile
+
+echo 'export PATH=/home/ec2-user/.pyenv/versions/3.7.2/bin:$PATH' >> /home/ec2-user/.bash_profile && source /home/ec2-user/.bash_profile
+
+pip install Django==3.0.5
+pip install Django==2.1.1
+
+CNAME: django-test3-dev.us-west-2.elasticbeanstalk.com
+
+CNAME: eb1-dev2.us-west-2.elasticbeanstalk.com
+
+记得zip制作方法，不要做成双层目录了。在根目录下面压缩需要的所有文件。
+创建环境的时候，用python3.6，不要用python3.7会有问题。
+导入程序zip包的时候如果有问题，看我作的视频
+
+从命令行创建源包
+使用 zip 命令创建源包。要包含隐藏的文件和文件夹，请使用如下所示的模式。
+~/myapp$ zip ../myapp.zip -r * .[^.]*
+  adding: app.js (deflated 63%)
+  adding: index.js (deflated 44%)
+  adding: manual.js (deflated 64%)
+  adding: package.json (deflated 40%)
+  adding: restify.js (deflated 85%)
+  adding: .ebextensions/ (stored 0%)
+  adding: .ebextensions/xray.config (stored 0%)
